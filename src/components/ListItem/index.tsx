@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import {showChangeInDollar} from '../../helpers/functions';
 import {CompanyShortDetails} from '../../helpers/types';
 import {CompaniesPageNavigationType} from '../../pages/Companies';
 import styles from './styles';
@@ -18,7 +19,7 @@ const ListItem: React.FC<Props> = ({item, index}) => {
 			<View>
 				<Text style={styles.latestPriceText}>${item.latestPrice}</Text>
 				<View style={styles.changesContainer}>
-					<Text style={[styles.changeText, item?.change < 0 && styles.redText]}>${item?.change}</Text>
+					<Text style={[styles.changeText, item?.change < 0 && styles.redText]}>{showChangeInDollar(item?.change)}</Text>
 					<Text style={[styles.changeText, item?.changePercent < 0 && styles.redText]}>({item?.changePercent.toFixed(2)}%)</Text>
 				</View>
 			</View>

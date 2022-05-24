@@ -26,6 +26,7 @@ const CompaniesPage: React.FC<Props> = ({navigation}) => {
 			setData(JSON.parse(res.data));
 		};
 
+		load();
 		const intervalID = setInterval(() => {
 			load();
 		}, GET_DATA_TIMER);
