@@ -4,6 +4,7 @@ import {FlatList, View} from 'react-native';
 import ListItem from '../../components/ListItem';
 import Loader from '../../components/Loader';
 import {useIex} from '../../context/IEXProvider';
+import {GET_DATA_TIMER} from '../../helpers/constants';
 import globalStyles from '../../helpers/globalStyles';
 import {CompanyShortDetails} from '../../helpers/types';
 import {MainStackParamsList} from '../../navigators';
@@ -27,7 +28,7 @@ const CompaniesPage: React.FC<Props> = ({navigation}) => {
 
 		const intervalID = setInterval(() => {
 			load();
-		}, 5000);
+		}, GET_DATA_TIMER);
 
 		navigation.addListener('blur', () => {
 			clearInterval(intervalID);

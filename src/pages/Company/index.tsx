@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import Loader from '../../components/Loader';
 import {useIex} from '../../context/IEXProvider';
+import {GET_DATA_TIMER} from '../../helpers/constants';
 import globalStyles from '../../helpers/globalStyles';
 import {CompanyInfo, CompanyShortDetails} from '../../helpers/types';
 import {MainStackParamsList} from '../../navigators';
@@ -37,7 +38,7 @@ const CompanyPage: React.FC<Props> = ({navigation, route}) => {
 		loadStaticData();
 		const intervalID = setInterval(() => {
 			loadDynamicData();
-		}, 5000);
+		}, GET_DATA_TIMER);
 
 		navigation.addListener('blur', () => {
 			clearInterval(intervalID);

@@ -1,4 +1,5 @@
 import {Axios} from 'axios';
+import {API_KEY} from '../helpers/constants';
 
 class IEXClient {
 	private axios: Axios;
@@ -7,7 +8,7 @@ class IEXClient {
 		this.axios = new Axios({
 			baseURL: 'https://cloud.iexapis.com/stable',
 			params: {
-				token: 'pk_3573bc401ea148599956a50310e73d85',
+				token: API_KEY,
 			},
 		});
 	}
