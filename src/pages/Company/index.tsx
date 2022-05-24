@@ -53,8 +53,8 @@ const CompanyPage: React.FC<Props> = ({navigation, route}) => {
 	}, []);
 
 	useEffect(() => {
-		if (firstPrice && data) {
-			setIsChangePositive(data.latestPrice > firstPrice);
+		if (firstPrice && data?.iexRealtimePrice) {
+			setIsChangePositive(data.iexRealtimePrice > firstPrice);
 		}
 	}, [firstPrice, data]);
 
@@ -65,8 +65,8 @@ const CompanyPage: React.FC<Props> = ({navigation, route}) => {
 	}, [data, companyData]);
 
 	const calculateYearChange = () => {
-		if (data?.latestPrice !== undefined) {
-			const result = data.latestPrice - firstPrice;
+		if (data?.iexRealtimePrice !== undefined) {
+			const result = data.iexRealtimePrice - firstPrice;
 			return showChangeInDollar(result);
 		}
 
@@ -74,8 +74,8 @@ const CompanyPage: React.FC<Props> = ({navigation, route}) => {
 	};
 
 	const calculateYearChangePercentage = () => {
-		if (data?.latestPrice !== undefined) {
-			const result = ((data.latestPrice - firstPrice) / Math.abs(firstPrice)) * 100;
+		if (data?.iexRealtimePrice !== undefined) {
+			const result = ((data.iexRealtimePrice - firstPrice) / Math.abs(firstPrice)) * 100;
 			return `${result.toFixed(2)}%`;
 		}
 
@@ -92,7 +92,7 @@ const CompanyPage: React.FC<Props> = ({navigation, route}) => {
 				<Text style={styles.title}>{companyData?.companyName}</Text>
 				<Text style={styles.symbol}>{data?.symbol}</Text>
 			</View>
-			<Text style={styles.subtitle}>${data?.latestPrice}</Text>
+			<Text style={styles.subtitle}>${data?.iexRealtimePrice}</Text>
 			<Text style={[styles.description, data?.change && data.change < 0 ? styles.redText : null]}>{`${showChangeInDollar(data?.change ? data.change : 0)} (${data?.changePercent.toFixed(2)}%)`}</Text>
 
 			<Text style={styles.key}>1YR Change</Text>

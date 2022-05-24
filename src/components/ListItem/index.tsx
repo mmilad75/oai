@@ -17,7 +17,7 @@ const ListItem: React.FC<Props> = ({item, index}) => {
 		<TouchableOpacity onPress={() => navigation.navigate('company', {symbol: item?.symbol})} style={[styles.container, index % 2 === 1 && styles.oddItems]} key={index}>
 			<Text style={styles.symbolText}>{item.symbol}</Text>
 			<View>
-				<Text style={styles.latestPriceText}>${item.latestPrice}</Text>
+				<Text style={styles.latestPriceText}>${item.iexRealtimePrice}</Text>
 				<View style={styles.changesContainer}>
 					<Text style={[styles.changeText, item?.change < 0 && styles.redText]}>{showChangeInDollar(item?.change)}</Text>
 					<Text style={[styles.changeText, item?.changePercent < 0 && styles.redText]}>({item?.changePercent.toFixed(2)}%)</Text>

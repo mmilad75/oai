@@ -1,9 +1,9 @@
 export interface CompanyShortDetails {
   symbol: string
-  latestPrice: number
   change: number
   changePercent: number
-  ytdChange?: number
+  ytdChange?: number,
+  iexRealtimePrice?: number
 }
 
 export interface CompanyInfo {
