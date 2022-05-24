@@ -75,7 +75,8 @@ const CompanyPage: React.FC<Props> = ({navigation, route}) => {
 
 	const calculateYearChangePercentage = () => {
 		if (data?.latestPrice !== undefined) {
-			return `${((data.latestPrice - firstPrice) / firstPrice).toFixed(2)}%`;
+			const result = ((data.latestPrice - firstPrice) / Math.abs(firstPrice)) * 100;
+			return `${result.toFixed(2)}%`;
 		}
 
 		return 0;
